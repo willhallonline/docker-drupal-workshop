@@ -1,0 +1,56 @@
+version: '3'
+
+networks:
+  code-network:
+    driver: bridge
+
+services:
+  mariadb:
+    container_name: mysql
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: xxx
+    volumes:
+      - ./databases/:/var/lib/mysql
+      - ./my-cnf/:/etc/mysql/conf.d/
+    networks:
+      - code-network
+    restart: always
+
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./app.conf:/etc/nginx/conf.d/app.conf
+      - ./app:/app
+      - /tmp:/tmp
+    networks:
+      - code-network
+
+  php71:
+    container_name: php72
+    image: wodby/drupal-php:7.2
+    volumes:
+      - ./app:/app
+      - /tmp:/tmp
+    networks:
+      - code-network
+
+  memcached:
+    container_name: memcached
+    image: memcached:latest
+    networks:
+      - code-network
+
+  solr:
+    container_name: solr
+    image: wodby/drupal-solr:7-5.4-2.2.0
+    networks:
+      - code-network
+    environment:
+      - core_create -c motnearme -d drupal
+
+

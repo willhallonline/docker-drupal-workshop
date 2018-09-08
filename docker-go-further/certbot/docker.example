@@ -1,0 +1,4 @@
+docker run -it --rm -v $(pwd)/certs:/etc/letsencrypt \
+-v $(pwd)/app:/app certbot/certbot \
+certonly --webroot --webroot-path=/app \
+-d example.com

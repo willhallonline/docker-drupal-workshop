@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  drupal:
+    image: drupal:8
+    environment:
+      DRUPAL_PROFILE: standard
+      DRUPAL_SITE_NAME: Drupal
+      DRUPAL_USER: admin
+      DRUPAL_PASS: admin
+      DRUPAL_DBURL: mysql://drupal:drupal@database:3306/drupal
+    ports:
+      - "8001:80"
+    link:
+      - database
+    restart: always
+
+  database:
+    image: mariadb:10
+    environment:
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal
+      MYSQL_DATABASE: drupal
+      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    restart: always
