@@ -9,7 +9,11 @@ services:
     container_name: mysql
     image: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: xxx
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal
+      MYSQL_DATABASE: drupal
+      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     networks:
       - code-network
     restart: always
@@ -18,12 +22,4 @@ services:
     build: .
     ports:
       - "8001:80"
-
-  memcached:
-    container_name: memcached
-    image: memcached:latest
-    networks:
-      - code-network
-
-volumes:
 
