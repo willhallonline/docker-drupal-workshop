@@ -12,5 +12,3 @@ RUN  ln -s /usr/lib/drush/vendor/bin/drush /usr/local/bin/drush && ln -s /usr/li
 
 COPY ../app /app
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-
-RUN cd /app && composer install
