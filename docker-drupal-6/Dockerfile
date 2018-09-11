@@ -11,4 +11,4 @@ COPY --from=willhallonline/composer:alpine /usr/bin/composer /usr/bin/composer
 RUN  ln -s /usr/lib/drush/vendor/bin/drush /usr/local/bin/drush && ln -s /usr/lib/drush8/vendor/bin/drush /usr/local/bin/drush8
 
 COPY ../app /app
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./app.conf /etc/nginx/conf.d/default.conf
