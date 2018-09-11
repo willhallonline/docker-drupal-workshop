@@ -10,5 +10,5 @@ COPY --from=willhallonline/drupal-drush-multi:latest /usr/lib/drush8 /usr/lib/
 COPY --from=willhallonline/composer:alpine /usr/bin/composer /usr/bin/composer
 RUN  ln -s /usr/lib/drush/vendor/bin/drush /usr/local/bin/drush && ln -s /usr/lib/drush8/vendor/bin/drush /usr/local/bin/drush8
 
-COPY ../app /app
+COPY ./app /app
 COPY ./app.conf /etc/nginx/conf.d/default.conf

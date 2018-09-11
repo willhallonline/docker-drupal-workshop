@@ -18,7 +18,6 @@ services:
     build: .
     ports:
       - "8001:80"
-      - "4443:443"
 
   memcached:
     container_name: memcached
@@ -27,4 +26,4 @@ services:
       - code-network
 
 volumes:
-  
+
