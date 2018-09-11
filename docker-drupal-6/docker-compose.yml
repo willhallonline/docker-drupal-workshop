@@ -1,0 +1,30 @@
+version: '3'
+
+networks:
+  code-network:
+    driver: bridge
+
+services:
+  mariadb:
+    container_name: mysql
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: xxx
+    networks:
+      - code-network
+    restart: always
+  app:
+    image: 127.0.0.1:5000/drupal8 # docker service create --name registry --publish published=5000,target=5000 registry:2
+    build: .
+    ports:
+      - "8001:80"
+      - "4443:443"
+
+  memcached:
+    container_name: memcached
+    image: memcached:latest
+    networks:
+      - code-network
+
+volumes:
+  
