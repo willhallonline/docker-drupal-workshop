@@ -6,10 +6,14 @@ networks:
 
 services:
   mariadb:
-    container_name: mysql
-    image: mysql
+    container_name: mariadb
+    image: mariadb
     environment:
-      MYSQL_ROOT_PASSWORD: xxx
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal
+      MYSQL_DATABASE: drupal
+      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     volumes:
       - ./databases/:/var/lib/mysql
       - ./my-cnf/:/etc/mysql/conf.d/
