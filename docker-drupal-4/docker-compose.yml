@@ -21,8 +21,7 @@ services:
     container_name: nginx
     image: nginx:latest
     ports:
-      - 80:80
-      - 443:443
+      - 8001:80
     volumes:
       - ./app.conf:/etc/nginx/conf.d/app.conf
       - ./app:/app
@@ -30,7 +29,7 @@ services:
     networks:
       - code-network
 
-  php71:
+  php72:
     container_name: php72
     image: wodby/drupal-php:7.2
     volumes:

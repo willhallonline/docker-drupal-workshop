@@ -11,7 +11,7 @@ services:
       DRUPAL_DBURL: mysql://drupal:drupal@database:3306/drupal
     ports:
       - "8001:80"
-    link:
+    links:
       - database
     restart: always
 
