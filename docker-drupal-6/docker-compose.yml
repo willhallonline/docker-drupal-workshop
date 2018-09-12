@@ -2,7 +2,6 @@ version: '3'
 
 services:
   mariadb:
-    container_name: mysql
     image: mysql
     environment:
       MYSQL_USER: drupal
@@ -10,8 +9,6 @@ services:
       MYSQL_DATABASE: drupal
       MYSQL_ROOT_PASSWORD: ''
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-    networks:
-      - code-network
     restart: always
   app:
     image: 127.0.0.1:5000/drupal8 # docker service create --name registry --publish published=5000,target=5000 registry:2
