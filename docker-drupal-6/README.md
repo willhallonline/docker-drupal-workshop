@@ -12,3 +12,7 @@ No: You are a company not looking to extend outside, save complexity.
 1. git submodule update --init --recursive
 2. cd /app docker run -it -v $(pwd):/app willhallonline/composer:alpine composer install
 3. docker run -it -v $(pwd):/app willhallonline/drupal-drush-multi drush si
+
+docker build -t 127.0.0.1:5000/drupal8 .
+docker-compose push
+docker stack deploy --compose-file docker-compose.yml drupal8
