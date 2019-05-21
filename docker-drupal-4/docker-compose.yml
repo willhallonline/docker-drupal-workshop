@@ -54,6 +54,6 @@ services:
     networks:
       - code-network
     environment:
-      - core_create -c motnearme -d drupal
+      - core_create -c example -d drupal
 
 
